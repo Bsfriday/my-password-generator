@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ======= Meta & SEO ======= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Password Generator – Create Strong Secure Passwords Online</title>
+  <meta name="description" content="Generate strong, secure passwords instantly with our free online password generator tool." />
+  <meta name="keywords" content="password generator, strong password, secure password tool, random password" />
+
+  <!-- Open Graph Tags -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Free Password Generator – Create Strong Secure Passwords Online" />
+  <meta property="og:description" content="Generate strong, secure passwords instantly with our free online password generator tool." />
+  <meta property="og:image"       content="https://via.placeholder.com/1200x630?text=Password+Generator" />
+
+  <!-- Favicon (inline SVG data URI so no extra file needed) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>" />
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free Password Generator",
+    "url": "https://example.com/password-generator",
+    "description": "Generate strong, secure passwords instantly with our free online password generator tool.",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "All",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Fonts: Orbitron (display) + IBM Plex Mono (mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- ======= Background grid lines (decorative) ======= -->
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <!-- ======= HEADER ======= -->
+  <header class="site-header">
+    <div class="logo" aria-label="Password Generator logo">
+      <span class="lock-icon">🔐</span>
+      <span class="logo-text">PASSFORGE</span>
+    </div>
+    <p class="tagline">Military-grade randomness, zero hassle.</p>
+  </header>
+
+  <!-- ======= MAIN CONTENT ======= -->
+  <main>
+    <section class="generator-section" aria-label="Password Generator Tool">
+
+      <!-- H1 for SEO -->
+      <h1 class="section-title">Password Generator</h1>
+      <p class="section-sub">Craft unbreakable passwords in one click.</p>
+
+      <!-- Password display card -->
+      <div class="password-card">
+        <div class="password-display-wrapper">
+          <output id="passwordOutput" class="password-output" aria-live="polite" aria-label="Generated password">
+            Click Generate
+          </output>
+          <button id="copyBtn" class="copy-btn" aria-label="Copy password to clipboard" title="Copy">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span class="copy-label">Copy</span>
+          </button>
+        </div>
+
+        <!-- Strength indicator -->
+        <div class="strength-bar-wrapper" aria-label="Password strength indicator">
+          <div class="strength-segments">
+            <div class="seg" id="seg1"></div>
+            <div class="seg" id="seg2"></div>
+            <div class="seg" id="seg3"></div>
+            <div class="seg" id="seg4"></div>
+          </div>
+          <span id="strengthLabel" class="strength-label">—</span>
+        </div>
+      </div>
+
+      <!-- Controls card -->
+      <div class="controls-card">
+
+        <!-- Length slider -->
+        <div class="control-group">
+          <label class="control-label" for="lengthSlider">
+            Length
+            <span id="lengthValue" class="length-badge">16</span>
+          </label>
+          <input
+            type="range"
+            id="lengthSlider"
+            min="4"
+            max="32"
+            value="16"
+            class="slider"
+            aria-valuemin="4"
+            aria-valuemax="32"
+            aria-valuenow="16"
+            aria-label="Password length"
+          />
+          <div class="slider-labels">
+            <span>4</span><span>32</span>
+          </div>
+        </div>
+
+        <!-- Character type toggles -->
+        <fieldset class="toggles-group">
+          <legend class="control-label">Character Types</legend>
+
+          <label class="toggle-row" for="uppercaseToggle">
+            <span class="toggle-info">
+              <span class="toggle-icon">A</span>
+              <span class="toggle-name">Uppercase</span>
+              <span class="toggle-sample">A–Z</span>
+            </span>
+            <span class="toggle-switch">
+              <input type="checkbox" id="uppercaseToggle" checked aria-label="Include uppercase letters" />
+              <span class="switch-track"></span>
+            </span>
+          </label>
+
+          <label class="toggle-row" for="lowercaseToggle">
+            <span class="toggle-info">
+              <span class="toggle-icon">a</span>
+              <span class="toggle-name">Lowercase</span>
+              <span class="toggle-sample">a–z</span>
+            </span>
+            <span class="toggle-switch">
+              <input type="checkbox" id="lowercaseToggle" checked aria-label="Include lowercase letters" />
+              <span class="switch-track"></span>
+            </span>
+          </label>
+
+          <label class="toggle-row" for="numbersToggle">
+            <span class="toggle-info">
+              <span class="toggle-icon">1</span>
+              <span class="toggle-name">Numbers</span>
+              <span class="toggle-sample">0–9</span>
+            </span>
+            <span class="toggle-switch">
+              <input type="checkbox" id="numbersToggle" checked aria-label="Include numbers" />
+              <span class="switch-track"></span>
+            </span>
+          </label>
+
+          <label class="toggle-row" for="symbolsToggle">
+            <span class="toggle-info">
+              <span class="toggle-icon">#</span>
+              <span class="toggle-name">Symbols</span>
+              <span class="toggle-sample">!@#$%</span>
+            </span>
+            <span class="toggle-switch">
+              <input type="checkbox" id="symbolsToggle" aria-label="Include symbols" />
+              <span class="switch-track"></span>
+            </span>
+          </label>
+
+        </fieldset>
+
+        <!-- Generate button -->
+        <button id="generateBtn" class="generate-btn" aria-label="Generate a new password">
+          <span class="btn-glow" aria-hidden="true"></span>
+          <span class="btn-text">⚡ Generate Password</span>
+        </button>
+
+      </div><!-- /controls-card -->
+
+    </section><!-- /generator-section -->
+
+    <!-- Info section -->
+    <section class="info-section" aria-label="Tips for strong passwords">
+      <h2 class="info-title">Why Use a Strong Password?</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <span class="info-card-icon">🛡️</span>
+          <h3>Brute-Force Proof</h3>
+          <p>A 20-character mixed password would take billions of years to crack with current hardware.</p>
+        </div>
+        <div class="info-card">
+          <span class="info-card-icon">🔄</span>
+          <h3>Unique Per Site</h3>
+          <p>Never reuse passwords. Use a password manager to store unique passwords for every account.</p>
+        </div>
+        <div class="info-card">
+          <span class="info-card-icon">🚫</span>
+          <h3>No Personal Info</h3>
+          <p>Avoid names, birthdays, or dictionary words. Random is always safer than memorable.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="site-footer">
+    <p>
+      &copy; <span id="year"></span> PassForge &mdash; All passwords are generated locally in your browser. Nothing is stored or sent.
+    </p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
